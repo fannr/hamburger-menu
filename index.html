@@ -14,10 +14,8 @@
           <h3>My Web</h3>
         </div>
 
-        <div class="navbar-toggle" id="navToggle">
-          <span class="top"></span>
-          <span class="middle"></span>
-          <span class="bottom"></span>
+        <div class="menu-btn">
+          <div class="menu-btn__hamburger"></div>
         </div>
 
         <div class="navbar-nav" id="navbarNav">
@@ -29,11 +27,20 @@
       </div>
     </nav>
     <script>
-      const navToggle = document.querySelector("#navToggle");
+      const menuBtn = document.querySelector(".menu-btn");
       const navbarNav = document.querySelector("#navbarNav");
-      navToggle.addEventListener("click", function () {
+      menuBtn.addEventListener("click", function (e) {
         this.classList.toggle("active");
         navbarNav.classList.toggle("active");
+        document.body.classList.toggle("active");
+      });
+
+      document.body.addEventListener("click", function (e) {
+        if (e.target == this) {
+          menuBtn.classList.remove("active");
+          navbarNav.classList.remove("active");
+          this.classList.remove("active");
+        }
       });
     </script>
   </body>
