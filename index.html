@@ -29,10 +29,17 @@
     <script>
       const menuBtn = document.querySelector(".menu-btn");
       const navbarNav = document.querySelector("#navbarNav");
+      const navA = document.querySelectorAll("a");
       menuBtn.addEventListener("click", function (e) {
         this.classList.toggle("active");
         navbarNav.classList.toggle("active");
         document.body.classList.toggle("active");
+
+        navA.forEach((a, i) => {
+          setTimeout(() => {
+            navA[i].classList.toggle("fadeUp");
+          }, 250 * (i + 1));
+        });
       });
 
       document.body.addEventListener("click", function (e) {
@@ -40,6 +47,11 @@
           menuBtn.classList.remove("active");
           navbarNav.classList.remove("active");
           this.classList.remove("active");
+          navA.forEach((a, i) => {
+            setTimeout(() => {
+              navA[i].classList.remove("fadeUp");
+            }, 250 * (i + 1));
+          });
         }
       });
     </script>
